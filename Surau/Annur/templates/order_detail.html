@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container mt-6">
+    <h1 style="color: black;">Booking Detail</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Item Id</th>
+          <th>Total Quantity</th>
+          <th>Date Booking</th>
+          <th>Date Return</th>
+          <th>Expiration Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ order.Itemid.Itemname }}</td>
+          <td>{{ order.TotalQuantity }}</td>
+          <td>{{ order.Datebooking }}</td>
+          <td>{{ order.Datereturn }}</td>
+          <td>{{ order.ExpireDate }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Item Form</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-lZp/iNCAjN25Sv+lPnkN5FezKxbxDh9D9iVsh1aLvMnPhhcdjwJJG1WWv7zOhOI+" crossorigin="anonymous">
+    <style>
+      form {
+        background-color: white;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
+      }
+
+      .form-label {
+        margin-bottom: 0.5rem;
+      }
+
+      .form-control {
+        margin-bottom: 1rem;
+        transition: border-color 0.3s ease;
+      }
+
+      .form-control:hover {
+        border-color: #ccc;
+      }
+
+      .form-control:focus {
+        border-color: #8d99ae;
+        box-shadow: none;
+      }
+      h2.text-center.mb-4 {
+        color: #ffffff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container mt-3">
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <h2 class="text-center mb-4"> Add Item </h2>
+          {% if message %}
+            <div class="alert alert-success" role="alert">
+              {{ message }}
+            </div>
+          {% endif %}
+          <form method="post" action="{% url 'customer_item' %}">
+            {% csrf_token %}
+
+            <div class="mb-3">
+              <label for="Itemid" class="form-label">Item ID:</label>
+              <input type="text" class="form-control" id="Itemid" name="Itemid">
+            </div>
+
+            <div class="mb-3">
+              <label for="Itemname" class="form-label">Item Name:</label>
+              <input type="text" class="form-control" id="Itemname" name="Itemname">
+            </div>
+
+            <div class="mb-3">
+              <label for="Itemquantity" class="form-label">Item Quantity:</label>
+              <input type="text" class="form-control" id="Itemquantity" name="Itemquantity">
+            </div>
+
+            <div class="mb-3">
+              <label for="Itemdescription" class="form-label">Item Description:</label>
+              <textarea class="form-control" id="Itemdescription" name="Itemdescription"></textarea>
+            </div>
+
+            <div class="d-grid gap-2">
+              <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JsyyLAmjKwESa+KZeKqrlXd+ItmL8VcWt0Avvsc0HmIHxR+ggsIOJtGy0ikV+oJ+" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+{% endblock %}

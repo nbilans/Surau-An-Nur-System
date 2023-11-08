@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+  <h1 style="color: black;">Update Item</h1>
+
+  <form method="post" action="update_data/{{ data.Itemid }}">
+    {% csrf_token %}
+    <div class="form-group">
+      <br/>
+      <label for="Itemname">Item Name:</label>
+      <input type="text" class="form-control" id="Itemname" name="Itemname" value="{{ data.Itemname }}">
+    </div>
+    <br/>
+    <div class="form-group">
+      <label for="Itemquantity">Item Quantity:</label>
+      <input type="text" class="form-control" id="Itemquantity" name="Itemquantity" value="{{ data.Itemquantity }}">
+    </div>
+    <br/>
+    <div class="form-group">
+      <label for="Itemdescription">Item Description:</label>
+      <textarea class="form-control" id="Itemdescription" name="Itemdescription">{{ data.Itemdescription }}</textarea>
+    </div>
+    <br/>
+    <button type="submit" class="btn btn-primary">Update Item</button>
+    <a href="javascript:history.back()" class="btn btn-primary">Back</a>
+  </form>
+
+{% endblock %}

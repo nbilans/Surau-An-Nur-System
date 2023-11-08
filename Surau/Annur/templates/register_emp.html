@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="col-md-6 offset-md-3">
+<h1 class="text-center mb-4" style="color: black;"> Admin Registration </h1>
+
+<form method="POST" action="">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Register</button>
+</form>
+
+</div>
+
+{% endblock %}

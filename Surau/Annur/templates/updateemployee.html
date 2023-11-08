@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+  <h1 style="color: black;">Update Employee</h1>
+
+  <form method="post" action="update_dataemployee/{{ data.Employeeid }}">
+    {% csrf_token %}
+    <div class="form-group">
+      <br/>
+      <label for="Employeename">Employee Name:</label>
+      <input type="text" class="form-control" id="Employeename" name="Employeename" value="{{ data.Employeename }}">
+    </div>
+    <br/>
+    <div class="form-group">
+      <label for="Employeephone">Employee Phone:</label>
+      <input type="text" class="form-control" id="Employeephone" name="Employeephone" value="{{ data.Employeephone }}">
+      </div>
+    <br/>
+    <button type="submit" class="btn btn-primary">Update Employee</button>
+    <a href="javascript:history.back()" class="btn btn-primary">Back</a>
+  </form>
+
+{% endblock %}

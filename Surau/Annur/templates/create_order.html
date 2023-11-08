@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container mt-6">
+    <h1 class="mb-5" style="color: black;">Confirm Booking</h1>
+    {% if messages %}
+      {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+          {{ message }}
+        </div>
+      {% endfor %}
+    {% endif %}
+    <form method="POST" action="{% url 'create_order' %}">
+      {% csrf_token %}
+      <div class="form-group row">
+        <label for="item_id" class="col-sm-3 col-form-label" style="color: black;">Item ID:</label>
+        <div class="col-sm-9">
+          <select class="form-control" id="item_id" name="item_id">
+            {% for item in items %}
+              <option value="{{ item.Itemid }}">{{ item.Itemid }} - {{ item.Itemname }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="date_booking" class="col-sm-3 col-form-label" style="color: black;">Date Booking:</label>
+        <div class="col-sm-9">
+            <input type="date" class="form-control" id="date_booking" name="date_booking" required>
+        </div>
+    </div>    
+      <div class="form-group row">
+        <label for="date_return" class="col-sm-3 col-form-label" style="color: black;">Date Return:</label>
+        <div class="col-sm-9">
+          <input type="date" class="form-control" id="date_return" name="date_return" required>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="total_quantity" class="col-sm-3 col-form-label" style="color: black;">Total Quantity:</label>
+        <div class="col-sm-9">
+          <input type="number" step="0.01" class="form-control" id="total_quantity" name="total_quantity" required>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="expire_date" class="col-sm-3 col-form-label" style="color: black;">Expiration Date:</label>
+        <div class="col-sm-9">
+          <input type="date" class="form-control" id="expire_date" name="expire_date" required>
+        </div>
+      </div>
+      <div class="form-group row mt-5">
+        <div class="col-sm-12 text-center">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <h1 class="mt-4 mb-4" style="color: black;">Item List</h1>
+  <div class="table-responsive">
+    <table class="table table-hover bg-white">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">Item ID</th>
+          <th scope="col">Item Name</th>
+          <th scope="col">Item Quantity</th>
+          <th scope="col">Item Description</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for data in alldata %}
+          <tr>
+            <td>{{ data.Itemid }}</td>
+            <td>{{ data.Itemname }}</td>
+            <td>{{ data.Itemquantity }}</td>
+            <td>{{ data.Itemdescription }}</td>
+            <td>
+              <div class="d-flex">
+                <a href="{% url 'update_item' data.Itemid %}" class="btn btn-primary mr-2">Edit</a>
+                <a href="{% url 'deleteorder' data.Itemid %}" class="btn btn-danger mr-2">Delete</a>
+                </form>
+              </div>
+            </td>
+          </tr>
+        {% empty %}
+          <tr>
+            <td colspan="5">No data available.</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

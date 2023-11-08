@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+  <h1 style="color: black;">Update Customer</h1>
+
+  <form method="post" action="update_datacustomer/{{ data.Cusid }}">
+    {% csrf_token %}
+    <div class="form-group">
+      <br/>
+      <label for="Cusname">Customer Name:</label>
+      <input type="text" class="form-control" id="Cusname" name="Cusname" value="{{ data.Cusname }}">
+    </div>
+    <br/>
+    <div class="form-group">
+      <label for="Cusemail">Customer Email:</label>
+      <input type="text" class="form-control" id="Cusemail" name="Cusemail" value="{{ data.Cusemail }}">
+    </div>
+    <br/>
+    <div class="form-group">
+      <label for="Cusphone">Customer Phone:</label>
+      <input type="text" class="form-control" id="Cusphone" name="Cusphone" value="{{ data.Cusphone }}">
+      </div>
+    <br/>
+    <button type="submit" class="btn btn-primary">Update Customer</button>
+    <a href="javascript:history.back()" class="btn btn-primary">Back</a>
+  </form>
+
+{% endblock %}
